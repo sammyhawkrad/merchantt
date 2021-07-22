@@ -1,5 +1,5 @@
 <template>
-  <div id="page-wrap">
+  <div id="page-wrap" v-if="product">
     <div id="img-wrap">
       <img :src="product.imageUrl" alt="">
     </div>
@@ -12,12 +12,15 @@
       <p>{{ product.description }}</p>
     </div>
   </div>
+  <not-found-page v-else/>
 </template>
 
 <script>
 import { products } from "../fake-data";
+import NotFoundPage from './NotFoundPage.vue';
 
 export default {
+  components: { NotFoundPage },
     name: 'ProductDetailPage',
     data() {
       return { product: products.find((p) => p.id === this.$route.params.id) }
