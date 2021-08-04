@@ -16,14 +16,19 @@
 </template>
 
 <script>
-import { products } from "../fake-data";
+import axios from 'axios';
 import NotFoundPage from './NotFoundPage.vue';
 
 export default {
   components: { NotFoundPage },
     name: 'ProductDetailPage',
     data() {
-      return { product: products.find((p) => p.id === this.$route.params.id) }
+      return { product: {} }
+    },
+    async created() {
+      const result = await axios.get(`/api/products/${this.$route.params.id}`);
+      const product = result.data;
+      this.product = product;
     }
 }
 </script>
