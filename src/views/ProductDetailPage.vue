@@ -7,7 +7,16 @@
       <h1>{{ product.name }}</h1>
       <h3 id="price">£{{ product.price }}</h3>
       <p>Average Rating: {{ product.averageRating}}</p>
-      <button id="add-to-cart" @click="addToCart">Add to Cart</button>
+      <button 
+        id="add-to-cart" 
+        @click="addToCart"
+        v-if="!showSuccessMessage"
+        >Add to Cart</button>
+      <button 
+        id="add-to-cart"
+        class="green-button" 
+        v-else
+        >Item successfully added to cart</button>
       <h4>Description</h4>
       <p>{{ product.description }}</p>
     </div>
@@ -23,7 +32,9 @@ export default {
   components: { NotFoundPage },
     name: 'ProductDetailPage',
     data() {
-      return { product: {} }
+      return { 
+        product: {},
+        showSuccessMessage: false };
     },
     async created() {
       const result = await axios.get(`/api/products/${this.$route.params.id}`);
@@ -35,6 +46,11 @@ export default {
         await axios.post('/api/users/12345/cart', {
           productId: this.$route.params.id
         });
+        this.showSuccessMessage = true;
+        setTimeout(() => {
+          this.$router.push('/products');
+        }, 1500);
+        
       }
     }
 }
@@ -68,5 +84,9 @@ export default {
     position: absolute;
     top: 24px;
     right: 16px;
+  }
+
+  .green-button {
+    background: green;
   }
 </style>
