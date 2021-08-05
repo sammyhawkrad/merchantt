@@ -2,6 +2,7 @@
   <div v-if="cartItems.length > 0">
     <products-list-item 
     v-for="product in cartItems"
+    @remove-from-cart="$emit('remove-from-cart', $event)"
     :key="product.id"
     :product="product"
     />
