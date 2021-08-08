@@ -33,6 +33,14 @@ export default {
     text-decoration: none;
   }
 
+  @media screen and (max-width: 500px) {
+    #products-link {
+      text-align: left;
+      font-size: 11px;
+      left: 16px;
+      top: 30px;
+    }
+  }
   #products-link h1 {
       margin: 0;
       text-transform: uppercase;

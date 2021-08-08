@@ -29,6 +29,12 @@ export default {
     width: 32%;
   }
 
+  @media screen and (max-width: 500px) {
+    .product-item {
+      width: 90%;
+    }
+  }
+
   .product-name {
     margin-bottom: 0;
   }

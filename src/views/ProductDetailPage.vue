@@ -86,6 +86,10 @@ export default {
     width: 400px;
   }
 
+  @media screen and (max-width: 500px) {
+    img { width: 80%}
+  }
+
   #product-details {
     padding: 16px;
     position: relative;

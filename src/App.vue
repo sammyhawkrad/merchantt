@@ -38,4 +38,8 @@ export default {
     outline: 0;
     padding: 16px;
   }
+
+  button:hover {
+    background-color: grey;
+  }
 </style>

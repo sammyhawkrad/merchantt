@@ -23,4 +23,11 @@ export default {
     justify-content: space-between;
     margin-top: 16px;
   }
+
+  @media screen and (max-width: 500px) {
+    .grid-wrap {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 </style>
